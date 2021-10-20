@@ -10,7 +10,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',  // 默认 run build 后 会出现白屏，加上这个
     proxyTable: {},
 
     // Various Dev Server settings

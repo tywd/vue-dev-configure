@@ -20,13 +20,13 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
+  context: path.resolve(__dirname, '../'), // context 是webpack entry的上下文 是入口文件所处的目录的绝对路径，默认情况下，将使用当前目录
   entry: {
     app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].js',
+    filename: '[name].js', // 考虑到CDN缓存的问题，我们一般会给文件名加上 hash 即 [name].[hash].js
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -35,7 +35,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src'), // 配置访问src 可用 @访问
     }
   },
   module: {
