@@ -28,7 +28,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
-    publicPath: './' // 默认 run build 后 会出现白屏，加上这个
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

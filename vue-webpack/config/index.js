@@ -10,7 +10,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',  // 默认 run build 后 会出现白屏，加上这个
+    assetsPublicPath: '/',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -51,7 +51,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',  // 默认 run build 后 会出现白屏， / 改为 ./
 
     /**
      * Source Maps

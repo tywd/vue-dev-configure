@@ -48,7 +48,6 @@ exports.cssLoaders = function (options) {
       return ExtractTextPlugin.extract({
         use: loaders,
         fallback: 'vue-style-loader',
-        publicPath: '../../' // 默认 run build 后 会出现白屏，加上这个
       })
     } else {
       return ['vue-style-loader'].concat(loaders)
