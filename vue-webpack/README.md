@@ -1,8 +1,3 @@
-# vue-dev-configure
-- vue+webpack 最开始的环境
-- vue+vuecli
-- vue3+vite
-
 # 目标
 从配置vue+webpack开始了解 vue项目如何使用的webpack插件运行与打包所经历过程
 熟悉webpack常用插件用法 与 尝试做vue项目优化
