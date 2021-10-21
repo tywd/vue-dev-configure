@@ -34,7 +34,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map', // 在这种情况下，源自 loader 的 source map 会得到更好的处理结果。然而，loader source map 会被简化为每行一个映射
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help

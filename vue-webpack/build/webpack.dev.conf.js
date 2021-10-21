@@ -22,24 +22,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
+    clientLogLevel: 'warning', // 允许在浏览器中设置日志级别，例如在重载之前，在一个错误之前或者 热模块替换 启用时。
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
-    hot: true,
+    hot: true, // 是否启用 webpack 的 热模块替换 特性
     contentBase: false, // since we use CopyWebpackPlugin.
-    compress: true,
+    compress: true, // 启用 gzip compression
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
+    open: config.dev.autoOpenBrowser, // 告诉 dev-server 在服务器已经启动后打开浏览器
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
-      : false,
+      : false, // 当出现编译错误或警告时，在浏览器中显示全屏覆盖。
     publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    proxy: config.dev.proxyTable, // 代理
     quiet: true, // necessary for FriendlyErrorsPlugin
+    // watchOptions 是一组用来定制 watch 模式的选项 Webpack 可以监听文件变化，当它们修改后会重新编译。这个页面介绍了如何启用这个功能，以及当 watch 无法正常运行的时候你可以做的一些调整。
+    // 对于某些系统，监听大量文件会导致大量的 CPU 或内存占用。可以使用正则排除像 node_modules 如此庞大的文件夹：
     watchOptions: {
       poll: config.dev.poll,
     }

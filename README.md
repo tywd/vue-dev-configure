@@ -18,3 +18,10 @@
   # npm 6.x
   `npm init @vitejs/app my-vue-app --template vue` 选择vue框架
 
+### 具体说明查看对应文件夹里的README.md
+
+
+### 其他
+  1. 个人认为 vue-cli2.x 使用的能更多的看到webpack的相关配置，更有利于对webpack的学习
+  2. 而vue-cli3.x之后 只使用一个vue.config.js vuecli已经实现为你做好了配置，隐藏了更多webpack相关，但这样也更能让开发者更多的投身与业务，减少繁琐的配置
+
