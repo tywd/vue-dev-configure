@@ -4,7 +4,7 @@
 - 3.vue3+vite
 
 # 说明
-针对以上vue的三种配置方式来学习针对vue 的webpack 配置学习优化
+针对以上vue的三种配置方式来学习针对 `vue` 的 `webpack` 配置学习优化
 
 # 1. vue2+webpack(vuecli 2.x)
 - vue 最开始的模板搭建环境 
@@ -25,6 +25,6 @@
 
 
 ### 其他
-  1. 个人认为 vue-cli2.x 使用的能更多的看到webpack的相关配置，更有利于对webpack的学习
-  2. 而vue-cli3.x之后 只使用一个vue.config.js vuecli已经实现为你做好了配置，隐藏了更多webpack相关，但这样也更能让开发者更多的投身与业务，减少繁琐的配置
+  1. 个人认为 `vue-cli2.x` 使用的能更多的看到webpack的相关配置，更有利于对webpack的学习
+  2. 而`vue-cli3.x`之后 只使用一个`vue.config.js`, `vuecli` 已经为项目做好了配置，隐藏了更多webpack相关，但这样也更能让开发者更多的投身与业务，减少繁琐的配置
 

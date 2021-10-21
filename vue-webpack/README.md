@@ -6,6 +6,7 @@
 
 ### 1. 初始化并运行
 ```
+  npm install -g @vue/cli-init
   vue init webpack ${project_name}  // vue最开始的webpack初始化
   npm i
   npm run dev // 即是执行 webpack-dev-server --inline --progress --config build/webpack.dev.conf.js
