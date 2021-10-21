@@ -1,7 +1,10 @@
 # vue-dev-configure
 - 1.vue2+webpack(vuecli 2.x) 
 - 2.vue2+vuecli(vuecli 3.x) 
-- 3.vue3+vite 
+- 3.vue3+vite
+
+# 说明
+针对以上vue的三种配置方式来学习针对vue 的webpack 配置学习优化
 
 # 1. vue2+webpack(vuecli 2.x)
 - vue 最开始的模板搭建环境 
