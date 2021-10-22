@@ -1,6 +1,4 @@
 const path = require("path");
-const glob = require('glob')
-const StylelintPlugin = require("stylelint-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const isProd = process.env.NODE_ENV === 'production'
@@ -8,17 +6,18 @@ const pagesInfo = require('./pages.config')
 const pages = {}
 const resolve = dir => path.join(__dirname, dir);
 
-glob.sync('./src/pages/**/main.js').forEach(entry => {
-  let chunk = entry.match(/\.\/src\/pages\/(.*)\/main\.js/)[1];
-  const curr = pagesInfo[chunk];
-  if (curr) {
-    pages[chunk] = {
-      entry,
-      ...curr,
-      chunk: ["chunk-vendors", "chunk-common", chunk]
-    }
-  }
-})
+// 多页面配置
+// glob.sync('./src/pages/**/main.js').forEach(entry => {
+//   let chunk = entry.match(/\.\/src\/pages\/(.*)\/main\.js/)[1];
+//   const curr = pagesInfo[chunk];
+//   if (curr) {
+//     pages[chunk] = {
+//       entry,
+//       ...curr,
+//       chunk: ["chunk-vendors", "chunk-common", chunk]
+//     }
+//   }
+// })
 
 module.exports = {
   publicPath: isProd ? '/production-sub-path/' : './',
@@ -31,79 +30,79 @@ module.exports = {
   crossorigin: '', // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性。
   // 更多细节可查阅：配合 webpack > 简单的配置方式
   configureWebpack: config => {
-    const plugins = [];
-    if (!isProd) {
-      plugins.push(
-        new StylelintPlugin({
-          files: ["src/**/*.vue", "src/assets/**/*.scss"],
-          fix: true
-        })
-      )
-    }
-    config.plugins = [...config.plugins, ...plugins];
+    // const plugins = [];
+    // if (!isProd) {
+    //   plugins.push(
+    //     new StylelintPlugin({
+    //       files: ["src/**/*.vue", "src/assets/**/*.scss"],
+    //       fix: true
+    //     })
+    //   )
+    // }
+    // config.plugins = [...config.plugins, ...plugins];
   },
   // 是一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改。 更多细节可查阅：配合 webpack > 链式操作
   chainWebpack: config => {
     // 修改 Loader 选项
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .tap(options => {
-        // 修改它的选项...
-        return options
-      })
+    // config.module
+    //   .rule('vue')
+    //   .use('vue-loader')
+    //   .tap(options => {
+    //     // 修改它的选项...
+    //     return options
+    //   })
 
-    // 添加别名
-    config.resolve.alias
-      .set("@", resolve("src"))
-      .set("@scss", resolve("src/assets/scss"))
-    if (isProd) {
-      // 压缩图片
-      config.module
-        .rule("images")
-        .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
-        .use("image-webpack-loader")
-        .loader("image-webpack-loader")
-        .options({
-          mozjpeg: {
-            progressive: true,
-            quality: 65
-          },
-          optipng: {
-            enabled: false
-          },
-          pngquant: {
-            quality: [0.65, 0.90],
-            speed: 4
-          },
-          gifsicle: {
-            interlaced: false
-          }
-        });
+    // // 添加别名
+    // config.resolve.alias
+    //   .set("@", resolve("src"))
+    //   .set("@scss", resolve("src/assets/scss"))
+    // if (isProd) {
+    //   // 压缩图片
+    //   config.module
+    //     .rule("images")
+    //     .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+    //     .use("image-webpack-loader")
+    //     .loader("image-webpack-loader")
+    //     .options({
+    //       mozjpeg: {
+    //         progressive: true,
+    //         quality: 65
+    //       },
+    //       optipng: {
+    //         enabled: false
+    //       },
+    //       pngquant: {
+    //         quality: [0.65, 0.90],
+    //         speed: 4
+    //       },
+    //       gifsicle: {
+    //         interlaced: false
+    //       }
+    //     });
 
-      // 打包分析
-      config.plugin("webpack-report").use(BundleAnalyzerPlugin, [{
-        analyzerMode: "static"
-      }]);
-    }
+    //   // 打包分析
+    //   config.plugin("webpack-report").use(BundleAnalyzerPlugin, [{
+    //     analyzerMode: "static"
+    //   }]);
+    // }
   },
   // css 配置
   css: {
     extract: isProd, // 生产环境下是 true，开发环境下是 false  是否使用css分离插件 ExtractTextPlugin
     sourceMap: false, // 设置为 true 之后可能会影响构建的性能
-    modules: false, // 启用 CSS modules for all css / pre-processor files.
+    requireModuleExtension: false, // 启用 CSS modules for all css / pre-processor files.
     // css预设器配置项 //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
     loaderOptions: {
-      scss: {
-        // 向全局sass样式传入共享的全局变量, $src可以配置图片cdn前缀
-        // 详情: https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
-        prependData: `
-          @import "@scss/variables.scss";
-          @import "@scss/mixins.scss";
-          @import "@scss/function.scss";
-          $src: "${process.env.VUE_APP_BASE_API}";
-          `
-      },
+      // scss: {
+      //   // 向全局sass样式传入共享的全局变量, $src可以配置图片cdn前缀
+      //   // 详情: https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
+      //   prependData: `
+      //     @import "@scss/variables.scss";
+      //     @import "@scss/mixins.scss";
+      //     @import "@scss/function.scss";
+      //     $src: "${process.env.VUE_APP_BASE_API}";
+      //     `
+      // },
       // postcss: {
       //   plugins: [
       //     require('postcss-plugin-px2rem')({
