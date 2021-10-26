@@ -6,3 +6,5 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+// 在main.ts 引入后 在此处声明router module
+declare module '@/router/*'

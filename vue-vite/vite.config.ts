@@ -16,7 +16,7 @@ export default defineConfig({
   resolve: {
     // 定义路径别名
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve('./src'),
       // "pages": resolve('src/pages/'),
       // "components": resolve('src/components/'),
       // "utils": resolve('src/utils/'),
