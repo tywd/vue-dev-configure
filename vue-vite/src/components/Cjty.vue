@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Cjty from '../components/Cjty.vue'
 
-// defineProps<{ msg: string }>()
+defineProps<{ msg: string }>() // 接收父组件传来的参数
 
 const count = ref(0)
 </script>
 
 <template>
-  <h1>Home.vue</h1>
-  <Cjty msg="天宇无敌" />
+  <h1>Cjty.vue</h1>
+  <h1>{{ msg }}</h1>
+  <h2>嗨木嗨啊</h2>
+
 </template>
 
 <style scoped>
